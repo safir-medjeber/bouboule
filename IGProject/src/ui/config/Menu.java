@@ -1,7 +1,29 @@
 package ui.config;
 
-import javax.swing.JPanel;
+import java.awt.Graphics;
 
-abstract class Menu extends JPanel {
+import ui.GameState;
+import ui.GameStateManager;
+
+public class Menu extends GameState {
+
+	public Menu(GameStateManager gsm) {
+		super(gsm);
+	}
+	
+	@Override
+	public void handleInput() {
+		
+	}
+
+	@Override
+	public void update() {
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		
+	}
 
 }

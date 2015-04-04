@@ -17,4 +17,10 @@ public abstract class GameState extends JPanel {
     public abstract void update();
 
 	public abstract void render(Graphics g);
+	
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		render(g);
+	}
 }

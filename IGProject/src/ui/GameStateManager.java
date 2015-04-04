@@ -1,12 +1,15 @@
 package ui;
+
 import java.awt.Graphics;
 import java.util.Stack;
 
+import ui.config.Menu;
 import ui.game.LevelRenderer;
 
 public class GameStateManager {
 
 	private static final int GAME = 0;
+	private static final int MAIN = 1;
 
 	private Game game;
 
@@ -23,7 +26,7 @@ public class GameStateManager {
 	}
 
 	public void render(Graphics g) {
-		gameStates.peek().render(g);
+		gameStates.peek().repaint();
 	}
 
 	public Game game() {
@@ -34,6 +37,8 @@ public class GameStateManager {
 		switch (state) {
 		case GAME:
 			return new LevelRenderer(this);
+		case MAIN:
+			return new Menu(this);
 		}
 		return null;
 	}
@@ -44,12 +49,13 @@ public class GameStateManager {
 	}
 
 	public void pushState(int state) {
-		gameStates.push(getState(state));
+		GameState gameState = getState(state);
+		gameStates.push(gameState);
+		game.setContentPane(gameState);
 	}
 
 	public void popState() {
 		GameState g = gameStates.pop();
-		// g.dispose();
 	}
 
 }
